@@ -1,8 +1,30 @@
 public class Library {
-    void checkOut(Item item, User user) {
+    // Assuming a collection to store items and users
+    private List<Item> items;
+    private List<User> users;
+
+    public Library() {
+        items = new ArrayList<>();
+        users = new ArrayList<>();
     }
 
-    void returnItem(Item item) {
-
+    public boolean checkOut(Item item, User user) {
+        if (item instanceof Borrowable && item.isAvailable()) {
+            ((Borrowable) item).borrowItem(user, LocalDate.now().plusDays(30)); // Assuming a 30-day borrowing period
+            user.addBorrowedItem(item);
+            return true;
+        }
+        return false;
     }
+
+    public boolean returnItem(Item item) {
+        if (item instanceof Borrowable) {
+            ((Borrowable) item).returnItem();
+            // Additional logic to remove the item from the user's borrowed list
+            return true;
+        }
+        return false;
+    }
+
+    // Additional methods like addUser, addItem, findItem, findUser, etc.
 }
