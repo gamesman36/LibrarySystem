@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 public interface Borrowable {
     /**
      * Borrow an item.

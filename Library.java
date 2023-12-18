@@ -1,3 +1,7 @@
+import java.util.List;
+import java.util.ArrayList;
+import java.time.LocalDate;
+
 public class Library {
     // Assuming a collection to store items and users
     private List<Item> items;
@@ -17,10 +21,10 @@ public class Library {
         return false;
     }
 
-    public boolean returnItem(Item item) {
+    public boolean returnItem(Item item, User user) {
         if (item instanceof Borrowable) {
             ((Borrowable) item).returnItem();
-            // Additional logic to remove the item from the user's borrowed list
+            user.removeBorrowedItem(item); // Remove the item from the user's borrowed list
             return true;
         }
         return false;

@@ -12,32 +12,17 @@ public class User {
         this.borrowedItems = new ArrayList<>();
     }
 
-    // Method to borrow an item
-    public void borrowItem(Item item) {
-        if (item.isAvailable()) {
-            item.setAvailable(false);
-            borrowedItems.add(item);
-        }
+    // Existing methods...
+
+    // New method to add a borrowed item
+    public void addBorrowedItem(Item item) {
+        borrowedItems.add(item);
     }
 
-    // Method to return an item
-    public void returnItem(Item item) {
-        item.setAvailable(true);
+    // New method to remove a returned item
+    public void removeBorrowedItem(Item item) {
         borrowedItems.remove(item);
     }
 
-    // Getters and setters
-    public String getUserId() {
-        return userId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public List<Item> getBorrowedItems() {
-        return borrowedItems;
-    }
-
-    // Additional methods can be added here
+    // Getters and setters...
 }
