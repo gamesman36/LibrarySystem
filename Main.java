@@ -28,8 +28,8 @@ public class Main {
 
     public static void listBooks() {
         var books = generateBooks();
-        for(int i=0; i<books.size(); i++) {
-            var bookString = books.get(i).getId() + " \"" + books.get(i).getTitle() + "\" by " + books.get(i).getAuthor();
+        for(Book book : books) {
+            var bookString = book.getId() + " \"" + book.getTitle() + "\" by " + book.getAuthor();
             System.out.println(bookString);
         }
         System.out.println();
@@ -37,16 +37,25 @@ public class Main {
 
     public static void listUsers() {
         var users = generateUsers();
-        for(int i=0; i<users.size(); i++) {
-            var userString = users.get(i).getUserId() + " " + users.get(i).getName();
+        for(User user : users) {
+            var userString = user.getUserId() + " " + user.getName();
             System.out.println(userString);
         }
         System.out.println();
     }
 
     public static void main(String[] args) {
-        showMenu();
-        listBooks();
-        listUsers();
+        var books = generateBooks();
+        var users = generateUsers();
+
+        Library library = new Library();
+
+        for(Book book : books) {
+            library.addItem(book);
+        }
+
+        for(User user : users) {
+            library.addUser(user);
+        }
     }
 }

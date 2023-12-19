@@ -12,6 +12,22 @@ public class Library {
         users = new ArrayList<>();
     }
 
+    // Method to add an item to the library
+    public void addItem(Item item) {
+        // Optional: Check if the item already exists to avoid duplicates
+        if (!items.contains(item)) {
+            items.add(item);
+        }
+    }
+
+    // Method to add a user to the library
+    public void addUser(User user) {
+        // Optional: Check if the user already exists to avoid duplicates
+        if (!users.contains(user)) {
+            users.add(user);
+        }
+    }
+
     public boolean checkOut(Item item, User user) {
         if (item instanceof Borrowable && item.isAvailable()) {
             ((Borrowable) item).borrowItem(user, LocalDate.now().plusDays(30)); // Assuming a 30-day borrowing period
