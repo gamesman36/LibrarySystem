@@ -24,5 +24,11 @@ public class User {
         borrowedItems.remove(item);
     }
 
-    // Getters and setters...
+    public String getUserId() {
+        return userId;
+    }
+
+    public String getName() {
+        return name;
+    }
 }
