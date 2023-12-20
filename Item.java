@@ -9,7 +9,6 @@ public class Item {
         this.isAvailable = true; // Items are available by default
     }
 
-    // Getters and setters
     public String getId() {
         return id;
     }
@@ -25,6 +24,4 @@ public class Item {
     public void setAvailable(boolean isAvailable) {
         this.isAvailable = isAvailable;
     }
-
-    // Additional methods can be added here
 }

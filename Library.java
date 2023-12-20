@@ -3,7 +3,6 @@ import java.util.ArrayList;
 import java.time.LocalDate;
 
 public class Library {
-    // Assuming a collection to store items and users
     private List<Item> items;
     private List<User> users;
 
@@ -12,7 +11,6 @@ public class Library {
         users = new ArrayList<>();
     }
 
-    // Method to add an item to the library
     public void addItem(Item item) {
         // Optional: Check if the item already exists to avoid duplicates
         if (!items.contains(item)) {
@@ -20,7 +18,6 @@ public class Library {
         }
     }
 
-    // Method to add a user to the library
     public void addUser(User user) {
         // Optional: Check if the user already exists to avoid duplicates
         if (!users.contains(user)) {
@@ -40,11 +37,9 @@ public class Library {
     public boolean returnItem(Item item, User user) {
         if (item instanceof Borrowable) {
             ((Borrowable) item).returnItem();
-            user.removeBorrowedItem(item); // Remove the item from the user's borrowed list
+            user.removeBorrowedItem(item);
             return true;
         }
         return false;
     }
-
-    // Additional methods like addUser, addItem, findItem, findUser, etc.
 }

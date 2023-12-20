@@ -12,14 +12,10 @@ public class User {
         this.borrowedItems = new ArrayList<>();
     }
 
-    // Existing methods...
-
-    // New method to add a borrowed item
     public void addBorrowedItem(Item item) {
         borrowedItems.add(item);
     }
 
-    // New method to remove a returned item
     public void removeBorrowedItem(Item item) {
         borrowedItems.remove(item);
     }

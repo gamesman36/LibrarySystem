@@ -1,10 +1,32 @@
+import java.util.Scanner;
 import java.util.Arrays;
 import java.util.ArrayList;
 
 public class Main {
     public static void showMenu() {
-        System.out.println("LibrarySystem v. 1.0");
-        System.out.println("© 2023 Daniel A. Wang\n");
+        try (Scanner keyboard = new Scanner(System.in)) {
+            System.out.println("LibrarySystem v. 1.0");
+            System.out.println("© 2023 Daniel A. Wang\n");
+            System.out.println("1. List books");
+            System.out.println("2. List users");
+            System.out.print("Enter your choice: ");
+
+            int choice = keyboard.nextInt();
+
+            switch (choice) {
+                case 1:
+                    listBooks();
+                    break;
+                case 2:
+                    listUsers();
+                    break;
+                default:
+                    System.out.println("Invalid choice.");
+                    break;
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 
     public static ArrayList<Book> generateBooks() {
@@ -32,7 +54,6 @@ public class Main {
             var bookString = book.getId() + " \"" + book.getTitle() + "\" by " + book.getAuthor();
             System.out.println(bookString);
         }
-        System.out.println();
     }
 
     public static void listUsers() {
@@ -41,7 +62,6 @@ public class Main {
             var userString = user.getUserId() + " " + user.getName();
             System.out.println(userString);
         }
-        System.out.println();
     }
 
     public static void main(String[] args) {
@@ -57,5 +77,7 @@ public class Main {
         for(User user : users) {
             library.addUser(user);
         }
+
+        showMenu();
     }
 }

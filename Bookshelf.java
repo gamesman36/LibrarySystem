@@ -30,6 +30,4 @@ public class Bookshelf implements Searchable {
                 .filter(book -> book.getTitle().equalsIgnoreCase(title))
                 .collect(Collectors.toList());
     }
-
-    // Additional search methods can be added here
 }

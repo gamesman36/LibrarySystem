@@ -1,17 +1,29 @@
-public class Book extends Item {
-    private String author; // Attribute to store the author's name
+import java.time.LocalDate;
 
-    // Update the constructor to include the author
+public class Book extends Item implements Borrowable {
+    private String author;
+
     public Book(String id, String title, String author) {
-        super(id, title); // Calls the constructor of the superclass Item
-        this.author = author; // Initializes the author attribute
+        super(id, title);
+        this.author = author;
     }
 
-    // Method to get the author's name
     public String getAuthor() {
         return author;
     }
 
-    // Other methods and attributes of the Book class...
-    // Make sure to include any other necessary methods like setters or additional getters
+    @Override
+    public boolean borrowItem(User user, LocalDate dueDate) {
+        if(this.isAvailable()) {
+            this.setAvailable(false);
+            user.addBorrowedItem(this);
+        }
+        return true;
+    }
+
+    @Override
+    public boolean returnItem() {
+        this.setAvailable(true);
+        return true;
+    }
 }

@@ -4,8 +4,6 @@ import java.util.stream.Collectors;
 public class LibraryCatalogue implements Searchable {
     private List<Book> books;
 
-    // Constructor and other methods...
-
     @Override
     public List<Book> searchByAuthor(String author) {
         return books.stream()
@@ -19,6 +17,4 @@ public class LibraryCatalogue implements Searchable {
                 .filter(book -> book.getTitle().equalsIgnoreCase(title))
                 .collect(Collectors.toList());
     }
-
-    // Additional methods...
 }
